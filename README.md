@@ -117,3 +117,5 @@ Feel free to connect with me if you have questions or just want to chat about AI
 * **GitHub:** https://github.com/lelgabry94/AI_Native_Journey.git
 
 * **LinkedIn:** https://www.linkedin.com/in/leilani-elgabry-886336157/
+
+* **instagram:** @lelgabry

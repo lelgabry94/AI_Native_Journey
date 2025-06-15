@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Quest Begins</title>
+  <style>
+    body {
+      background: linear-gradient(#0a0a23, #1e1e40);
+      color: #fff5f0;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 3em;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-top: 1em;
+    }
+
+    .message {
+      margin-top: 2em;
+      padding: 1em;
+      border: 2px dashed #00ffff;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 50, 0.2);
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🔮✨ Welcome, brave explorer... ✨🔮</h1>
+  <div class="message" id="messageBox">
+    <!-- Dynamic message appears here -->
+  </div>
+
+  <!-- 🌌 Background mystical music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/30/audio_0c9cc7d1b5.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // 🧙‍♂️ Get name from URL
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || "explorer";
+
+    // ✨ Prepare welcome message
+    const message = `
+    🔮✨ Welcome, ${name}... ✨🔮<br><br>
+    You are now entering a portal to a new realm — the realm of code!<br>
+    Grab your tech, ready your mind, and take your first step into the unknown...<br><br>
+    ⚙️ The adventure begins now! ⚙️`;
+
+    // Display message
+    document.getElementById('messageBox').innerHTML = message;
+
+    // 🧚 Fairy Voice Greeting (if supported)
+    if ('speechSynthesis' in window) {
+      const greet = () => {
+        const fairyVoice = new SpeechSynthesisUtterance(message.replace(/<br>/g, ' '));
+        fairyVoice.pitch = 1.5;
+        fairyVoice.rate = 0.95;
+        fairyVoice.volume = 1;
+        const voices = speechSynthesis.getVoices();
+        fairyVoice.voice = voices.find(v => v.name.includes("Princess")) || voices[0];
+        speechSynthesis.speak(fairyVoice);
+      };
+
+      // Wait for voices to load
+      if (speechSynthesis.getVoices().length === 0) {
+        speechSynthesis.onvoiceschanged = greet;
+      } else {
+        greet();
+      }
+    }
+
+    // 💡 Optional: Force music play on user interaction (for autoplay restrictions)
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('bg-music');
+      if (audio && audio.paused) {
+        audio.play().catch(err => console.warn('Audio blocked:', err));
+      }
+    });
+  </script>
+</body>
+</html>

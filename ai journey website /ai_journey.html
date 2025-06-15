@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My AI Journey Begins!</title>
+  <style>
+    body {
+      background: linear-gradient(#0f0f1e, #1c1c2e);
+      color: #fff5f0;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 3em;
+    }
+    h1 {
+      font-size: 3em;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    p {
+      font-size: 1.2em;
+      margin-top: 1em;
+    }
+    .portal {
+      font-size: 2em;
+      margin-top: 2em;
+      white-space: pre;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 2em;
+      padding: 0.8em 1.5em;
+      font-size: 1.2em;
+      background: #00ffff;
+      color: #000014;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ffff;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #0ff;
+    }
+    #nameInput {
+      margin-top: 1em;
+      padding: 0.5em;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>My AI Journey Begins!</h1>
+  <p>Welcome, brave explorer. You stand before a glowing portal to a new world of tech...</p>
+  <div class="portal">
+    ✨✨✨✨✨✨✨✨<br>
+  ✨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✨<br>
+✨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 🚪 ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✨<br>
+  ✨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✨<br>
+    ✨✨✨✨✨✨✨✨
+  </div>
+  <p>Step through, and let the code guide your path... 🌀</p>
+
+  <label for="nameInput">What is your name, brave explorer? ✨</label><br>
+  <input type="text" id="nameInput" placeholder="Type your name here...">
+
+  <br>
+  <a class="btn" id="startBtn" href="#">Start Your Quest 🚀</a>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/09/audio_53e3c93cfa.mp3?filename=fantasy-game-background-loop-114008.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const btn = document.getElementById("startBtn");
+    btn.addEventListener("click", function(event) {
+      const name = document.getElementById("nameInput").value.trim();
+      if (name !== "") {
+        window.location.href = `next.html?name=${encodeURIComponent(name)}`;
+      } else {
+        alert("Please enter your name before beginning your journey.");
+      }
+    });
+  </script>
+</body>
+</html>
