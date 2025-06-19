@@ -42,14 +42,13 @@
   </style>
 </head>
 <body>
-  <h1>🔮✨ Welcome, brave explorer... ✨🔮</h1>
   <div class="message" id="messageBox">
-    <!-- Dynamic message appears here -->
+    <!-- Personalized content will be injected here by JS -->
   </div>
 
   <!-- 🌌 Background mystical music -->
   <audio id="bg-music" autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/30/audio_0c9cc7d1b5.mp3" type="audio/mpeg">
+    <source src="audio/aylex-tension-rising.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -58,20 +57,20 @@
     const params = new URLSearchParams(window.location.search);
     const name = params.get('name') || "explorer";
 
-    // ✨ Prepare welcome message
-    const message = `
-    🔮✨ Welcome, ${name}... ✨🔮<br><br>
-    You are now entering a portal to a new realm — the realm of code!<br>
-    Grab your tech, ready your mind, and take your first step into the unknown...<br><br>
-    ⚙️ The adventure begins now! ⚙️`;
-
-    // Display message
-    document.getElementById('messageBox').innerHTML = message;
+    // ✨ Prepare personalized message
+    const messageHTML = `
+      <h2>🔮✨ Welcome, ${name}... ✨🔮</h2>
+      <p>${name}, you have now been transported through the portal to a new realm — the realm of code!<br>
+      The ancient oracle, revealing the path you are destined to forge:</p>
+      <img src="image/scroll2.png" alt="Prophecy Scroll" style="max-width: 220px; width: 80%; margin: 1.5em auto 0; display: block; filter: drop-shadow(0 0 12px #00ffff);" />
+      <p style="margin-top: 1.5em;">Grab your tech, ready your mind, and take your first step into the unknown...</p>
+    `;
+    document.getElementById('messageBox').innerHTML = messageHTML;
 
     // 🧚 Fairy Voice Greeting (if supported)
     if ('speechSynthesis' in window) {
       const greet = () => {
-        const fairyVoice = new SpeechSynthesisUtterance(message.replace(/<br>/g, ' '));
+        const fairyVoice = new SpeechSynthesisUtterance(`${name}, you have now been transported through the portal to a new realm — the realm of code! The ancient oracle, revealing the path you are destined to forge: Grab your tech, ready your mind, and take your first step into the unknown...`);
         fairyVoice.pitch = 1.5;
         fairyVoice.rate = 0.95;
         fairyVoice.volume = 1;
@@ -79,8 +78,6 @@
         fairyVoice.voice = voices.find(v => v.name.includes("Princess")) || voices[0];
         speechSynthesis.speak(fairyVoice);
       };
-
-      // Wait for voices to load
       if (speechSynthesis.getVoices().length === 0) {
         speechSynthesis.onvoiceschanged = greet;
       } else {
