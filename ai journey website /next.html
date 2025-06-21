@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Quest Begins</title>
+  <title>Welcome to the Realm of Code</title>
   <style>
     body {
       background: #000000;
@@ -31,15 +31,14 @@
     .message {
       margin-top: 2em;
       padding: 2em;
-      border: 2px solid #00ffff;
       border-radius: 15px;
       background-color: rgba(0, 0, 50, 0.3);
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
     }
 
     .scroll-image {
-      max-width: 220px;
-      width: 80%;
+      max-width: 400px;
+      width: 90%;
       margin: 1.5em auto 0;
       display: block;
       filter: drop-shadow(0 0 12px #00ffff);
@@ -57,7 +56,7 @@
   </style>
 </head>
 <body>
-  <h1>Your Quest Begins!</h1>
+  <h1></h1>
   
   <div class="message" id="messageBox">
     <!-- Personalized content will be injected here by JS -->
@@ -70,24 +69,24 @@
   </audio>
 
   <script>
-    // 🧙‍♂️ Get name from URL
+    // Get name from URL
     const params = new URLSearchParams(window.location.search);
     const name = params.get('name') || "explorer";
 
-    // ✨ Prepare personalized message
+    // Prepare personalized message
     const messageHTML = `
-      <h2>🔮✨ Welcome, ${name}... ✨🔮</h2>
-      <p>${name}, you have now been transported through the portal to a new realm — the realm of code!<br>
+      <h2>Welcome to the Realm of Code</h2>
+      <p>You have now been transported through the portal to a new realm — the realm of code!<br>
       The ancient oracle, revealing the path you are destined to forge:</p>
       <img src="image/scroll2.png" alt="Prophecy Scroll" class="scroll-image" />
       <p style="margin-top: 1.5em;">Grab your tech, ready your mind, and take your first step into the unknown...</p>
     `;
     document.getElementById('messageBox').innerHTML = messageHTML;
 
-    // 🧚 Fairy Voice Greeting (if supported)
+    // Fairy Voice Greeting (if supported)
     if ('speechSynthesis' in window) {
       const greet = () => {
-        const fairyVoice = new SpeechSynthesisUtterance(`${name}, you have now been transported through the portal to a new realm — the realm of code! The ancient oracle, revealing the path you are destined to forge: Grab your tech, ready your mind, and take your first step into the unknown...`);
+        const fairyVoice = new SpeechSynthesisUtterance(`Welcome to the Realm of Code. You have now been transported through the portal to a new realm — the realm of code! The ancient oracle, revealing the path you are destined to forge: Grab your tech, ready your mind, and take your first step into the unknown...`);
         fairyVoice.pitch = 1.5;
         fairyVoice.rate = 0.95;
         fairyVoice.volume = 1;
