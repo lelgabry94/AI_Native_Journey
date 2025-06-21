@@ -6,7 +6,7 @@
   <title>Your Quest Begins</title>
   <style>
     body {
-      background: linear-gradient(#0a0a23, #1e1e40);
+      background: #000000;
       color: #fff5f0;
       font-family: 'Courier New', monospace;
       text-align: center;
@@ -14,34 +14,51 @@
     }
 
     h1 {
+      font-size: 3em;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    h2 {
       font-size: 2.5em;
       animation: glow 2s ease-in-out infinite alternate;
     }
 
     p {
-      font-size: 1.3em;
+      font-size: 1.2em;
       margin-top: 1em;
     }
 
     .message {
       margin-top: 2em;
-      padding: 1em;
-      border: 2px dashed #00ffff;
+      padding: 2em;
+      border: 2px solid #00ffff;
       border-radius: 15px;
-      background-color: rgba(0, 0, 50, 0.2);
+      background-color: rgba(0, 0, 50, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .scroll-image {
+      max-width: 220px;
+      width: 80%;
+      margin: 1.5em auto 0;
+      display: block;
+      filter: drop-shadow(0 0 12px #00ffff);
+      border-radius: 10px;
     }
 
     @keyframes glow {
       from {
-        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
       }
       to {
-        text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
       }
     }
   </style>
 </head>
 <body>
+  <h1>Your Quest Begins!</h1>
+  
   <div class="message" id="messageBox">
     <!-- Personalized content will be injected here by JS -->
   </div>
@@ -62,7 +79,7 @@
       <h2>🔮✨ Welcome, ${name}... ✨🔮</h2>
       <p>${name}, you have now been transported through the portal to a new realm — the realm of code!<br>
       The ancient oracle, revealing the path you are destined to forge:</p>
-      <img src="image/scroll2.png" alt="Prophecy Scroll" style="max-width: 220px; width: 80%; margin: 1.5em auto 0; display: block; filter: drop-shadow(0 0 12px #00ffff);" />
+      <img src="image/scroll2.png" alt="Prophecy Scroll" class="scroll-image" />
       <p style="margin-top: 1.5em;">Grab your tech, ready your mind, and take your first step into the unknown...</p>
     `;
     document.getElementById('messageBox').innerHTML = messageHTML;
