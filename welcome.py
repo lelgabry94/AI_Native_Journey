@@ -38,7 +38,7 @@ def speak_fairy_placeholder(message):
 def conduct_quiz(quiz_title, lesson_text, questions_data):
     """
     Conducts a lesson and a quiz for the explorer.
-    questions_data: A list of dictionaries, each with 'question', 'options' (list), 'answer' (index or string).
+    questions_data: A list of dictionaries, each with 'question', 'options' (list), 'answer' (index or string), and 'explanation'.
     """
     global global_score, total_questions_asked
 
@@ -102,7 +102,11 @@ def conduct_quiz(quiz_title, lesson_text, questions_data):
         if is_correct:
             current_quiz_score += 1
         
-        time.sleep(2.5) # Longer pause after showing result
+        # Display explanation
+        if 'explanation' in q_data and q_data['explanation']:
+            type_text(f"\n💡 Explanation: {q_data['explanation']}\n", delay=0.04)
+        
+        time.sleep(3.5) # Longer pause after showing result and explanation
 
     clear_screen()
     type_text(f"\n--- {quiz_title} Results ---\n", delay=0.05)
@@ -122,7 +126,6 @@ def conduct_quiz(quiz_title, lesson_text, questions_data):
 
 
 # --- Quiz Data Definitions ---
-# (These remain unchanged as they define the content, not the timing)
 
 glowing_forest_lesson = [
     "Welcome to the Glowing Forest, where the fundamental magic of Python begins!",
@@ -139,17 +142,32 @@ glowing_forest_quiz = [
     {
         'question': "How do you store the number 7 in a variable named 'magic_number'?",
         'options': ["magic_number == 7", "set magic_number = 7", "magic_number = 7", "magic_number is 7"],
-        'answer': "magic_number = 7"
+        'answer': "magic_number = 7",
+        'explanation': "In Python, the single equals sign `=` is used for assignment, giving a value to a variable."
     },
     {
         'question': "What is the correct way to display the text 'Enchanted Forest' in Python?",
         'options': ["show('Enchanted Forest')", "display('Enchanted Forest')", "print('Enchanted Forest')", "echo 'Enchanted Forest'"],
-        'answer': "print('Enchanted Forest')"
+        'answer': "print('Enchanted Forest')",
+        'explanation': "`print()` is the built-in function in Python used to output data to the console."
     },
     {
         'question': "What will be the output of: `spell = \"abracadabra\"` then `print(spell)`?",
         'options': ["spell", "\"abracadabra\"", "abracadabra", "error"],
-        'answer': "abracadabra"
+        'answer': "abracadabra",
+        'explanation': "When you print a variable, Python displays the *value* stored inside that variable, not the variable's name itself."
+    },
+    {
+        'question': "Which symbol is used for comments in Python code?",
+        'options': ["//", "/* */", "#", "--"],
+        'answer': "#",
+        'explanation': "The `#` symbol marks the start of a single-line comment in Python. Comments are ignored by the interpreter and are used for human readability."
+    },
+    {
+        'question': "What is the result of `10 + 5` in Python?",
+        'options': ["105", "15", "error", "ten plus five"],
+        'answer': "15",
+        'explanation': "Python performs basic arithmetic operations as expected. `10 + 5` adds the two numbers together."
     }
 ]
 
@@ -167,17 +185,32 @@ temple_technology_quiz = [
     {
         'question': "What does 'ML' commonly stand for in the realm of technology?",
         'options': ["Mystical Logic", "Machine Learning", "Magical Linguistics", "Modern Language"],
-        'answer': "Machine Learning"
+        'answer': "Machine Learning",
+        'explanation': "ML is the widely recognized abbreviation for Machine Learning, a field of artificial intelligence."
     },
     {
         'question': "Is Machine Learning primarily about writing explicit, step-by-step instructions for every task, or about training computers to learn patterns from data?",
         'options': ["Writing explicit instructions", "Training computers to learn from data"],
-        'answer': "Training computers to learn from data"
+        'answer': "Training computers to learn from data",
+        'explanation': "The core concept of ML is that algorithms learn from data, rather than being explicitly programmed for every possible scenario."
     },
     {
         'question': "Name one real-world application where Machine Learning might be used. (e.g., predicting X, recommending Y, classifying Z)",
-        'options': None,
-        'answer': "predicting weather" # Example answer
+        'options': None, # Free text answer
+        'answer': "predicting weather", # Example answer, user input will be lowercased for comparison
+        'explanation': "Machine Learning is used in many applications, including forecasting weather, personalized recommendations (like on streaming services), and spam detection in emails."
+    },
+    {
+        'question': "Which type of data is most commonly used to 'train' a machine learning model?",
+        'options': ["Crystal balls", "Historical data and examples", "Ancient prophecies", "User opinions"],
+        'answer': "Historical data and examples",
+        'explanation': "ML models learn from patterns found in large datasets of past information to make informed decisions or predictions."
+    },
+    {
+        'question': "What is the process called where an ML model makes a guess or determination based on new, unseen data?",
+        'options': ["Enchanting", "Divining", "Inference", "Hypothesizing"],
+        'answer': "Inference",
+        'explanation': "Inference is the term used when a trained ML model applies its learned patterns to new data to make a prediction or classification."
     }
 ]
 
@@ -185,17 +218,20 @@ mastery_quiz_questions = [
     {
         'question': "In Python, what is a 'variable' often compared to?",
         'options': ["A talking parrot", "An enchanted box that holds information", "A shimmering portal to another realm", "A forgotten scroll"],
-        'answer': "An enchanted box that holds information"
+        'answer': "An enchanted box that holds information",
+        'explanation': "Variables act as symbolic names for storing information that can be referred to and manipulated later."
     },
     {
         'question': "Which Python function allows your code to 'speak' and display text in the terminal?",
         'options': ["input()", "speak()", "display()", "print()"],
-        'answer': "print()"
+        'answer': "print()",
+        'explanation': "The `print()` function is fundamental for displaying output in Python programs."
     },
     {
         'question': "If you wanted to get a user's name from the keyboard, which function would you use?",
         'options': ["get_text()", "read_line()", "input()", "user_prompt()"],
-        'answer': "input()"
+        'answer': "input()",
+        'explanation': "`input()` is used to get text input from the user via the keyboard."
     },
     {
         'question': "What is the primary purpose of an `if/else` statement in Python?",
@@ -205,7 +241,8 @@ mastery_quiz_questions = [
             "To draw ASCII art",
             "To store multiple lines of text"
         ],
-        'answer': "To allow your script to make decisions based on conditions"
+        'answer': "To allow your script to make decisions based on conditions",
+        'explanation': "`if/else` statements control the flow of a program, executing different blocks of code based on whether a condition is true or false."
     },
     {
         'question': "When prompting an AI, what is a 'persona'?",
@@ -215,7 +252,8 @@ mastery_quiz_questions = [
             "A special type of spell",
             "A secret password for the AI"
         ],
-        'answer': "A specific role or character you ask the AI to adopt"
+        'answer': "A specific role or character you ask the AI to adopt",
+        'explanation': "A persona helps guide the AI's tone, style, and approach to its responses, making them more tailored and useful."
     },
     {
         'question': "Why is it important to explain your code to a non-technical audience?",
@@ -225,7 +263,8 @@ mastery_quiz_questions = [
             "To get more magic spells for your script",
             "It's not important, only coders need to understand"
         ],
-        'answer': "To build good communication skills and help others understand your AI's purpose"
+        'answer': "To build good communication skills and help others understand your AI's purpose",
+        'explanation': "Clear communication helps bridge the gap between technical and non-technical understanding, essential for collaboration and broader impact."
     },
     {
         'question': "What is one benefit of asking an AI for 'structured output' (e.g., bullet points, code blocks)?",
@@ -235,17 +274,37 @@ mastery_quiz_questions = [
             "It makes the AI's response clearer and easier to use",
             "It uses less magic"
         ],
-        'answer': "It makes the AI's response clearer and easier to use"
+        'answer': "It makes the AI's response clearer and easier to use",
+        'explanation': "Structured output helps in parsing, readability, and direct usability of AI-generated content."
     },
     {
         'question': "Connecting your AI creation to a 'real-world problem' helps you understand its...",
         'options': ["Color palette", "Purpose and potential impact", "Favorite animal", "Magical energy level"],
-        'answer': "Purpose and potential impact"
+        'answer': "Purpose and potential impact",
+        'explanation': "Understanding the real-world application gives context and significance to your AI projects."
     },
     {
         'question': "True or False: Machine Learning involves explicitly writing every single rule for a computer.",
         'options': ["True", "False"],
-        'answer': "False"
+        'answer': "False",
+        'explanation': "ML focuses on learning patterns from data, enabling computers to make decisions without explicit, exhaustive programming of rules."
+    },
+    {
+        'question': "What is a 'loop' in programming?",
+        'options': [
+            "A secret tunnel in the code",
+            "A way to repeat a block of code multiple times",
+            "A type of data variable",
+            "A method for drawing circles"
+        ],
+        'answer': "A way to repeat a block of code multiple times",
+        'explanation': "Loops (like `for` and `while` loops) are used to execute a set of instructions repeatedly, saving time and making code more efficient."
+    },
+    {
+        'question': "Which of the following is NOT a common data type in Python?",
+        'options': ["String", "Integer", "Boolean", "Pixel"],
+        'answer': "Pixel",
+        'explanation': "String (text), Integer (whole numbers), and Boolean (True/False) are common Python data types. 'Pixel' relates to image processing, not a core data type."
     }
 ]
 
@@ -307,17 +366,20 @@ while True:
         type_text("\nYou wander into the Glowing Forest, where bugs are friendly and code grows on trees...", delay=0.04)
         time.sleep(2.5) # Longer pause
         conduct_quiz("Glowing Forest: Python Basics", glowing_forest_lesson, glowing_forest_quiz)
-        break
+        # Allows user to choose another path after completing a quiz
+        continue
     elif choice == "2":
         type_text("\nYou arrive at the Temple of Technology, guided by ancient AIs whispering algorithms...", delay=0.04)
         time.sleep(2.5) # Longer pause
         conduct_quiz("Temple of Technology: Intro to Machine Learning", temple_technology_lesson, temple_technology_quiz)
-        break
+        # Allows user to choose another path after completing a quiz
+        continue
     elif choice == "3":
         type_text("\nYou step forward to face the Grand Mastery Quiz! May your wisdom shine brightest!", delay=0.04)
         time.sleep(2.5) # Longer pause
         conduct_quiz("Grand Mastery Quiz: All Realms", [], mastery_quiz_questions)
-        break
+        # Allows user to choose another path after completing a quiz
+        continue
     elif choice == "4":
         type_text("\nYou return to the Human World, but something about you has changed... you now speak Python!", delay=0.04)
         time.sleep(3.5) # Longer pause
