@@ -1,0 +1,227 @@
+/* Import Google Font - Inter for a clean, modern look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* Basic body and typography styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8; /* A very light, calming blue-grey */
+    color: #333; /* Dark grey for body text */
+    margin: 0;
+    padding: 20px; /* Add some padding around the whole page */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Header styles */
+header {
+    width: 100%;
+    max-width: 800px; /* Limit header width */
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    background-color: #ffffff; /* White background for header */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+}
+
+h1 {
+    font-size: 2.5em; /* Larger font size for the main title */
+    color: #5a7d7c; /* A calming teal */
+    font-weight: 700; /* Bold */
+    margin: 0; /* Remove default margin */
+}
+
+/* Main content area styles */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between controls and prompt display */
+    width: 100%;
+    max-width: 800px; /* Limit main content width */
+    flex-grow: 1; /* Allow main to grow and take available space */
+}
+
+/* Controls section styles */
+#controls {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form elements */
+    align-items: flex-start; /* Align labels/inputs to the left */
+}
+
+/* Label styles */
+label {
+    font-size: 1.1em;
+    color: #4a6c6a; /* Slightly darker teal for labels */
+    font-weight: 600;
+    margin-bottom: 5px; /* Space below labels */
+}
+
+/* Input and Select styles */
+input[type="text"],
+select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 12px 10px;
+    border: 1px solid #cce0e0; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1em;
+    color: #333;
+    background-color: #f9fdfd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #7b9e9e; /* Highlight on focus */
+    box-shadow: 0 0 0 3px rgba(123, 158, 158, 0.3); /* Subtle glow */
+    outline: none;
+}
+
+/* Button styles */
+button {
+    background-color: #7b9e9e; /* Calming teal button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for buttons */
+}
+
+button:hover {
+    background-color: #5a7d7c; /* Darker teal on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0); /* Press effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific button layout (to put them on their own lines) */
+#generate-daily-btn,
+#generate-breakthrough-btn {
+    width: auto; /* Allow buttons to size based on content */
+    align-self: stretch; /* Make them fill the width of their container */
+}
+
+
+/* Prompt Display section styles */
+#prompt-display {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    min-height: 150px; /* Ensure a minimum height even when empty */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+}
+
+#prompt-text {
+    font-size: 1.6em; /* Larger font for the main prompt */
+    color: #2c3e50; /* Darker text for prominence */
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    max-width: 90%; /* Limit text width for readability */
+}
+
+#guidance-text {
+    font-size: 1em;
+    color: #6c7a89; /* Softer color for guidance */
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Footer styles */
+footer {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px 0;
+    color: #888; /* Light grey for footer text */
+    font-size: 0.9em;
+}
+/* --- Responsive Design --- */
+
+/* Styles for screens smaller than 768px (e.g., tablets in portrait, large phones) */
+@media (max-width: 768px) {
+    body {
+        padding: 15px; /* Reduce overall padding */
+    }
+
+    h1 {
+        font-size: 2em; /* Slightly smaller title */
+    }
+
+    #controls,
+    #prompt-display,
+    header,
+    main,
+    footer {
+        max-width: 100%; /* Allow these to take full width up to padding */
+    }
+
+    #prompt-text {
+        font-size: 1.4em; /* Slightly smaller prompt text */
+    }
+
+    button {
+        padding: 10px 20px; /* Slightly smaller button padding */
+        font-size: 1em;
+    }
+}
+
+/* Styles for screens smaller than 480px (e.g., smaller phones) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Further reduce overall padding */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Even smaller title */
+    }
+
+    #controls {
+        padding: 20px; /* Reduce controls padding */
+    }
+
+    #prompt-display {
+        padding: 20px; /* Reduce prompt display padding */
+        min-height: 120px; /* Adjust min-height for smaller screens */
+    }
+
+    #prompt-text {
+        font-size: 1.2em; /* Smaller prompt text */
+    }
+
+    #guidance-text {
+        font-size: 0.9em; /* Smaller guidance text */
+    }
+
+    label {
+        font-size: 1em;
+    }
+
+    input[type="text"],
+    select,
+    button {
+        padding: 10px; /* Consistent padding for all form elements */
+        font-size: 0.95em;
+    }
+}

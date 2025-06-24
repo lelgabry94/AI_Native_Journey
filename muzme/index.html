@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzme - Creative Prompt Generator</title>
+    <!-- Link to our stylesheet for visual styling -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header section: Contains the main title of the application -->
+    <header>
+        <h1>Muzme - Your Creative Compass</h1>
+    </header>
+
+    <!-- Main content section: Holds the user controls and the prompt display area -->
+    <main>
+        <!-- This div will contain all the input elements and buttons for generating prompts -->
+        <div id="controls">
+            <label for="category-select">Choose a Category:</label>
+            <select id="category-select">
+                <option value="visual">Visual Expression</option>
+                <option value="literary">Literary Reflection</option>
+                <option value="movement_sound">Movement & Sound</option>
+                <option value="open" selected>Open Exploration</option>
+            </select>
+
+            <!-- Label and input field for optional feeling/intention focus -->
+            <label for="intention-input">Optional: Focus Feeling/Intention:</label>
+            <input type="text" id="intention-input" placeholder="e.g., joy, release, curiosity">
+
+            <!-- Buttons to generate prompts -->
+            <button id="generate-daily-btn">Daily Creative Invitation</button>
+            <button id="generate-breakthrough-btn">Need a Breakthrough</button>
+        </div>
+
+           <!-- This div will display the generated creative prompts and guidance messages -->
+        <div id="prompt-display">
+            <p id="prompt-text">Your creative invitation will appear here.</p>
+            <p id="guidance-text">Click 'Daily Creative Invitation' or 'Need a Breakthrough' to begin!</p>
+        </div>
+
+    </main>
+
+    <!-- Footer section: For copyright or other minor information -->
+    <footer>
+        <p>&copy; 2024 Muzme. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to our JavaScript file for interactivity. 'defer' ensures HTML loads first. -->
+    <script src="script.js" defer></script>
+</body>
+</html>
