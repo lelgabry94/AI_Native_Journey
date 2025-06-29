@@ -37,12 +37,67 @@
     }
 
     .scroll-image {
-      max-width: 400px;
-      width: 90%;
+      max-width: 600px;
+      width: 95%;
       margin: 1.5em auto 0;
       display: block;
-      filter: drop-shadow(0 0 12px #00ffff);
-      border-radius: 10px;
+      filter: drop-shadow(0 0 15px #00ffff);
+      border-radius: 15px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2em;
+      gap: 2em;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1em 2em;
+      font-size: 1.3em;
+      background: #00ffff;
+      color: #000014;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00ffff;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      min-width: 250px;
+      width: 250px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .btn:hover {
+      background: #0ff;
+      box-shadow: 0 0 30px #00ffff;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(45deg, #ff00ff, #8000ff);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(45deg, #ff33ff, #9933ff);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.9);
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #00ffff, #0080ff);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #33ffff, #3399ff);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
     }
 
     @keyframes glow {
@@ -78,12 +133,11 @@
       <h2>Welcome to the Realm of Code</h2>
       <p>You have now been transported through the portal to a new realm — the realm of code!<br>
       The ancient oracle, revealing the path you are destined to forge:</p>
-      <img src="image/scroll2.png" alt="Prophecy Scroll" class="scroll-image" />
+      <img src="image/scroll2.0.png" alt="Prophecy Scroll" class="scroll-image" />
       <p style="margin-top: 1.5em;">Grab your tech, ready your mind, and take your first step into the unknown...</p>
-      <div style="margin-top: 2em;">
-        <a href="quiz.html?name=${encodeURIComponent(name)}" class="btn" style="margin: 0.5em;">🌟 Begin Your Learning Quest</a>
-        <br>
-        <a href="ai_journey.html" class="btn" style="margin: 0.5em;">🏠 Return to Portal</a>
+      <div class="button-container">
+        <a href="ai_journey.html" class="btn btn-secondary">Back to Portal</a>
+        <a href="quiz.html?name=${encodeURIComponent(name)}" class="btn btn-primary">Begin Your Learning Quest</a>
       </div>
     `;
     document.getElementById('messageBox').innerHTML = messageHTML;
