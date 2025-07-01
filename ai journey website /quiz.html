@@ -237,6 +237,151 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Word of the Day Styles */
+    .word-card {
+      background: linear-gradient(135deg, rgba(255, 255, 0, 0.1), rgba(255, 136, 0, 0.1));
+      border: 2px solid rgba(255, 255, 0, 0.3);
+      border-radius: 15px;
+      padding: 2em;
+      margin: 2em 0;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .word-card:hover {
+      border-color: rgba(255, 255, 0, 0.6);
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .word-front, .word-back {
+      text-align: center;
+      width: 100%;
+    }
+
+    .word-front h3 {
+      font-size: 2.5em;
+      color: #ffff00;
+      margin-bottom: 0.5em;
+      text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+    }
+
+    .word-back h3 {
+      font-size: 1.8em;
+      color: #ff8800;
+      margin-bottom: 1em;
+      text-shadow: 0 0 10px rgba(255, 136, 0, 0.5);
+    }
+
+    .word-category {
+      font-size: 1.2em;
+      color: #ffaa00;
+      font-style: italic;
+    }
+
+    .word-example {
+      font-size: 1.1em;
+      color: #fff5f0;
+      font-style: italic;
+      margin-top: 1em;
+      padding: 1em;
+      background-color: rgba(255, 255, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .word-controls {
+      text-align: center;
+      margin: 2em 0;
+    }
+
+    .word-game {
+      margin: 2em 0;
+      padding: 2em;
+      background-color: rgba(255, 255, 0, 0.05);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 0, 0.2);
+    }
+
+    .word-game-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1em;
+      margin: 2em 0;
+    }
+
+    .word-game-option {
+      background-color: rgba(255, 255, 0, 0.1);
+      border: 2px solid rgba(255, 255, 0, 0.3);
+      border-radius: 10px;
+      padding: 1.5em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1em;
+    }
+
+    .word-game-option:hover {
+      background-color: rgba(255, 255, 0, 0.2);
+      border-color: #ffff00;
+      box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+    }
+
+    .word-game-option.correct {
+      background-color: rgba(0, 255, 0, 0.3);
+      border-color: #00ff00;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+    }
+
+    .word-game-option.incorrect {
+      background-color: rgba(255, 0, 0, 0.3);
+      border-color: #ff0000;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+    }
+
+    .word-game-result {
+      text-align: center;
+      padding: 1em;
+      border-radius: 10px;
+      margin: 1em 0;
+      font-size: 1.2em;
+    }
+
+    .word-game-result.correct {
+      background-color: rgba(0, 255, 0, 0.2);
+      border: 2px solid #00ff00;
+      color: #00ff00;
+    }
+
+    .word-game-result.incorrect {
+      background-color: rgba(255, 0, 0, 0.2);
+      border: 2px solid #ff0000;
+      color: #ff0000;
+    }
+
+    .word-stats {
+      text-align: center;
+      margin: 2em 0;
+      padding: 1em;
+      background-color: rgba(255, 255, 0, 0.05);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 0, 0.2);
+    }
+
+    .word-stats p {
+      margin: 0.5em 0;
+      font-size: 1.1em;
+    }
+
+    .word-stats span {
+      color: #ffff00;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -257,6 +402,7 @@
         <button class="btn" onclick="startQuiz('crystal-caves')">💎 Crystal Caves - Data Structures</button>
         <button class="btn" onclick="startQuiz('ethereal-plains')">🌌 Ethereal Plains - Advanced Concepts</button>
         <button class="btn" onclick="startQuiz('mastery')" style="background: linear-gradient(45deg, #ff00ff, #00ffff);">🏆 Grand Mastery Quiz - All Realms</button>
+        <button class="btn" onclick="startWordOfTheDay()" style="background: linear-gradient(45deg, #ffff00, #ff8800);">📚 Word of the Day - Build Your Vocabulary</button>
       </div>
       
       <br>
@@ -296,6 +442,43 @@
       <h2>🎉 Quiz Results 🎉</h2>
       <div id="finalResults"></div>
       <button class="btn" onclick="returnToMainMenu()">Return to Main Menu</button>
+    </div>
+
+    <div id="wordOfTheDayContainer" class="quiz-section hidden">
+      <h2>📚 Word of the Day - Build Your Vocabulary</h2>
+      <div class="progress-bar">
+        <div class="progress-fill" id="wordProgressFill"></div>
+      </div>
+      
+      <div id="wordCard" class="word-card">
+        <div id="wordFront" class="word-front">
+          <h3 id="currentWord">Click to Start</h3>
+          <p id="wordCategory">Technical & Business Terms</p>
+        </div>
+        <div id="wordBack" class="word-back hidden">
+          <h3 id="wordDefinition">Definition will appear here</h3>
+          <p id="wordExample">Example usage will appear here</p>
+        </div>
+      </div>
+      
+      <div id="wordControls" class="word-controls">
+        <button class="btn" id="flipCardBtn" onclick="flipCard()">🔄 Flip Card</button>
+        <button class="btn" id="nextWordBtn" onclick="nextWord()" style="display: none;">➡️ Next Word</button>
+        <button class="btn" id="startWordGameBtn" onclick="startWordGame()">🎮 Start Word Game</button>
+      </div>
+      
+      <div id="wordGameContainer" class="word-game hidden">
+        <h3>Match the Word to its Definition</h3>
+        <div id="wordGameOptions" class="word-game-options"></div>
+        <div id="wordGameResult" class="word-game-result hidden"></div>
+      </div>
+      
+      <div id="wordStats" class="word-stats">
+        <p>Words Learned Today: <span id="wordsLearned">0</span></p>
+        <p>Total Words: <span id="totalWords">0</span></p>
+      </div>
+      
+      <button class="btn" onclick="returnToMainMenu()" style="margin-top: 1em;">← Return to Main Menu</button>
     </div>
   </div>
 
@@ -1388,6 +1571,251 @@
     document.addEventListener('DOMContentLoaded', function() {
       initializeQuiz();
     });
+
+    // Word of the Day System
+    const wordOfTheDayData = [
+      {
+        word: "Algorithm",
+        definition: "A step-by-step procedure or set of rules for solving a problem or accomplishing a task.",
+        example: "A recipe is like an algorithm - it gives you exact steps to create a dish.",
+        category: "Technical Term"
+      },
+      {
+        word: "API",
+        definition: "Application Programming Interface - a set of rules that allows different software applications to communicate with each other.",
+        example: "When you use a weather app, it uses an API to get weather data from a weather service.",
+        category: "Technical Term"
+      },
+      {
+        word: "Machine Learning",
+        definition: "A type of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed.",
+        example: "Netflix uses machine learning to recommend movies based on what you've watched before.",
+        category: "AI Concept"
+      },
+      {
+        word: "Variable",
+        definition: "A container that stores data values in programming. Think of it as a labeled box that holds information.",
+        example: "In Python: name = 'John' creates a variable called 'name' that stores the text 'John'.",
+        category: "Programming Term"
+      },
+      {
+        word: "Database",
+        definition: "An organized collection of structured information or data, typically stored electronically in a computer system.",
+        example: "A library catalog is like a database - it organizes books by title, author, and subject.",
+        category: "Technical Term"
+      },
+      {
+        word: "Cloud Computing",
+        definition: "The delivery of computing services over the internet, including servers, storage, databases, networking, and software.",
+        example: "Google Drive is cloud computing - you store files on Google's servers instead of your computer.",
+        category: "Technical Term"
+      },
+      {
+        word: "Debugging",
+        definition: "The process of finding and fixing errors or bugs in computer programs.",
+        example: "When your code doesn't work, debugging is like being a detective trying to find what went wrong.",
+        category: "Programming Term"
+      },
+      {
+        word: "Scalability",
+        definition: "The ability of a system to handle increased workload or growth without a proportional increase in resources.",
+        example: "A scalable website can handle more users without slowing down or crashing.",
+        category: "Business Term"
+      },
+      {
+        word: "ROI",
+        definition: "Return on Investment - a measure used to evaluate the efficiency or profitability of an investment.",
+        example: "If you spend $100 on advertising and earn $150 in sales, your ROI is 50%.",
+        category: "Business Term"
+      },
+      {
+        word: "MVP",
+        definition: "Minimum Viable Product - a version of a product with just enough features to be usable by early customers.",
+        example: "The first iPhone was an MVP - it had basic features that could be improved in later versions.",
+        category: "Business Term"
+      },
+      {
+        word: "Root Cause Analysis",
+        definition: "A systematic approach to identify the underlying cause of a problem rather than just treating its symptoms.",
+        example: "Essential for effective automation design - don't just fix the symptom, find what's really causing the issue.",
+        category: "Technical Term"
+      },
+      {
+        word: "Core Functionality",
+        definition: "The essential features that make a product or system work for its primary purpose.",
+        example: "Your focus for tonight's build session - build the essential features first, add extras later.",
+        category: "Business Term"
+      },
+      {
+        word: "Problem Definition",
+        definition: "The process of clearly identifying and articulating what specific issue needs to be solved before building a solution.",
+        example: "Critical for successful automation projects - understand the problem completely before coding.",
+        category: "Technical Term"
+      },
+      {
+        word: "Technology Solution",
+        definition: "A systematic approach using technology to address a specific business or personal challenge.",
+        example: "Using automation tools to solve real problems rather than just building cool tech for its own sake.",
+        category: "Business Term"
+      }
+    ];
+
+    let currentWordIndex = 0;
+    let wordsLearned = 0;
+    let isCardFlipped = false;
+    let currentGameWords = [];
+
+    function startWordOfTheDay() {
+      document.getElementById('mainMenu').classList.add('hidden');
+      document.getElementById('wordOfTheDayContainer').classList.remove('hidden');
+      document.getElementById('quizContainer').classList.add('hidden');
+      document.getElementById('resultsContainer').classList.add('hidden');
+      
+      currentWordIndex = 0;
+      wordsLearned = 0;
+      isCardFlipped = false;
+      
+      showCurrentWord();
+      updateWordStats();
+    }
+
+    function showCurrentWord() {
+      const wordData = wordOfTheDayData[currentWordIndex];
+      document.getElementById('currentWord').textContent = wordData.word;
+      document.getElementById('wordCategory').textContent = wordData.category;
+      document.getElementById('wordDefinition').textContent = wordData.definition;
+      document.getElementById('wordExample').textContent = wordData.example;
+      
+      // Reset card to front
+      document.getElementById('wordFront').classList.remove('hidden');
+      document.getElementById('wordBack').classList.add('hidden');
+      isCardFlipped = false;
+      
+      // Update progress
+      const progress = ((currentWordIndex + 1) / wordOfTheDayData.length) * 100;
+      document.getElementById('wordProgressFill').style.width = progress + '%';
+      
+      // Show/hide buttons
+      document.getElementById('flipCardBtn').style.display = 'inline-block';
+      document.getElementById('nextWordBtn').style.display = 'none';
+    }
+
+    function flipCard() {
+      const wordFront = document.getElementById('wordFront');
+      const wordBack = document.getElementById('wordBack');
+      
+      if (isCardFlipped) {
+        wordFront.classList.remove('hidden');
+        wordBack.classList.add('hidden');
+        isCardFlipped = false;
+      } else {
+        wordFront.classList.add('hidden');
+        wordBack.classList.remove('hidden');
+        isCardFlipped = true;
+        document.getElementById('nextWordBtn').style.display = 'inline-block';
+      }
+    }
+
+    function nextWord() {
+      currentWordIndex++;
+      wordsLearned++;
+      
+      if (currentWordIndex >= wordOfTheDayData.length) {
+        // All words completed
+        showWordCompletion();
+      } else {
+        showCurrentWord();
+        updateWordStats();
+      }
+    }
+
+    function startWordGame() {
+      // Select 4 random words for the game
+      const shuffledWords = [...wordOfTheDayData].sort(() => Math.random() - 0.5);
+      currentGameWords = shuffledWords.slice(0, 4);
+      
+      document.getElementById('wordGameContainer').classList.remove('hidden');
+      showWordGameQuestion();
+    }
+
+    function showWordGameQuestion() {
+      const gameWords = [...currentGameWords].sort(() => Math.random() - 0.5);
+      const correctWord = gameWords[0];
+      
+      const optionsHTML = gameWords.map((word, index) => 
+        `<div class="word-game-option" onclick="checkWordGameAnswer('${word.word}', '${correctWord.word}')">
+          ${word.definition}
+        </div>`
+      ).join('');
+      
+      document.getElementById('wordGameOptions').innerHTML = `
+        <h4 style="color: #ffff00; margin-bottom: 1em; font-size: 1.3em;">Match the word "<strong>${correctWord.word}</strong>" to its definition:</h4>
+        ${optionsHTML}
+      `;
+      document.getElementById('wordGameResult').classList.add('hidden');
+    }
+
+    function checkWordGameAnswer(selectedWord, correctWord) {
+      const isCorrect = selectedWord === correctWord;
+      const resultDiv = document.getElementById('wordGameResult');
+      
+      if (isCorrect) {
+        resultDiv.textContent = '✨ Correct! Well done! ✨';
+        resultDiv.className = 'word-game-result correct';
+      } else {
+        resultDiv.textContent = `Incorrect. The correct answer was: ${correctWord}`;
+        resultDiv.className = 'word-game-result incorrect';
+      }
+      
+      resultDiv.classList.remove('hidden');
+      
+      // Show correct answer
+      document.querySelectorAll('.word-game-option').forEach(option => {
+        if (option.textContent.trim() === wordOfTheDayData.find(w => w.word === correctWord).definition) {
+          option.classList.add('correct');
+        } else if (option.textContent.trim() === wordOfTheDayData.find(w => w.word === selectedWord).definition) {
+          option.classList.add('incorrect');
+        }
+      });
+      
+      // Add next game button
+      setTimeout(() => {
+        const nextGameBtn = document.createElement('button');
+        nextGameBtn.className = 'btn';
+        nextGameBtn.textContent = '🔄 Play Again';
+        nextGameBtn.onclick = () => {
+          document.getElementById('wordGameResult').classList.add('hidden');
+          showWordGameQuestion();
+        };
+        resultDiv.appendChild(nextGameBtn);
+      }, 2000);
+    }
+
+    function showWordCompletion() {
+      const container = document.getElementById('wordOfTheDayContainer');
+      container.innerHTML = `
+        <h2>🎉 Vocabulary Mastery Complete! 🎉</h2>
+        <p>You've learned <strong>${wordsLearned}</strong> new words today!</p>
+        <p>Your vocabulary is growing stronger with each word.</p>
+        <div style="margin: 2em 0;">
+          <button class="btn" onclick="startWordOfTheDay()" style="margin: 0.5em;">🔄 Review Words Again</button>
+          <button class="btn" onclick="returnToMainMenu()" style="margin: 0.5em;">🏠 Return to Main Menu</button>
+        </div>
+      `;
+    }
+
+    function updateWordStats() {
+      document.getElementById('wordsLearned').textContent = wordsLearned;
+      document.getElementById('totalWords').textContent = wordOfTheDayData.length;
+    }
+
+    // Update returnToMainMenu to include word of day container
+    function returnToMainMenu() {
+      document.getElementById('mainMenu').classList.remove('hidden');
+      document.getElementById('quizContainer').classList.add('hidden');
+      document.getElementById('resultsContainer').classList.add('hidden');
+      document.getElementById('wordOfTheDayContainer').classList.add('hidden');
+    }
   </script>
 </body>
 </html> 
