@@ -1,0 +1,4 @@
+python-dotenv
+openai
+# google-auth-oauthlib # For actual Google Sheets API, but we'll simulate for now
+# google-api-python-client # For actual Google Sheets API, but we'll simulate for now 

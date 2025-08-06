@@ -1,0 +1,8 @@
+nicegui
+python-dotenv
+google-generativeai
+pytest
+pytest-asyncio
+selenium
+requests
+aiohttp
