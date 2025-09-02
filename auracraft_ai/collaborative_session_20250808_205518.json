@@ -1,0 +1,58 @@
+{
+  "user_profile": {
+    "experience_level": "beginner",
+    "niche": "nyc",
+    "platform_focus": "Instagram Reels",
+    "follower_count": "under_1k",
+    "goals": [
+      "build_audience",
+      "engagement",
+      "education"
+    ]
+  },
+  "selected_posts": [
+    {
+      "Day/Date Suggestion": "Monday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Video",
+      "Core Concept/Topic": "NYC on a Budget: Free Activities",
+      "Draft Caption": "NYC doesn't have to break the bank!  \u2728  Check out my top 5 FREE things to do in the city that'll still give you major Insta-worthy moments.  What are YOUR favorite free NYC activities? Share in the comments! \ud83d\udc47 #NYCFree #BudgetTravel #NewYorkCity #TravelTips #FreeThingsToDo #NYCAdventures",
+      "Relevant Hashtags": "#NYCFree #BudgetTravel #NewYorkCity #TravelTips #FreeThingsToDo #NYCAdventures #TravelOnABudget #HiddenGemsNYC",
+      "AI Trend Insight": "Leverages the \"budget travel\" and \"hidden gem\" trends. Shows a relatable aspect of NYC life for beginners. Community building through asking for user comments.",
+      "Image Generation Prompt": "A dynamic montage of fast cuts showing: a shot of Central Park from Strawberry Fields, a wide shot of the Brooklyn Bridge from DUMBO, a person looking up at the Chrysler Building, a close-up of street art in Bushwick, a shot of people picnicking in Washington Square Park.  Style should be bright, energetic, and slightly cinematic."
+    },
+    {
+      "Day/Date Suggestion": "Friday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Image/Video (carousel post)",
+      "Core Concept/Topic": "Best Instagrammable Spots in NYC (Beginner Edition)",
+      "Draft Caption": "\ud83d\udcf8 Ready to level up your NYC Instagram game?  These 5 spots are perfect for beginners and guaranteed to get you those likes! \ud83d\ude09 Tag a friend who needs to see this!  #NYCInstagram #InstagrammablePlaces #NewYorkCity #TravelPhotography #PhotoSpots #NYCViews",
+      "Relevant Hashtags": "#NYCInstagram #InstagrammablePlaces #NewYorkCity #TravelPhotography #PhotoSpots #NYCViews #PhotographyTips #NYCGuide",
+      "AI Trend Insight": "Leverages the ever-popular \"Instagrammable places\" trend, targeting a beginner audience. Uses a \"tag a friend\" call to action for increased reach.",
+      "Image Generation Prompt": "Carousel of 5 high-quality images:  1. The iconic yellow cabs in Times Square at night. 2. The Brooklyn Bridge with the Manhattan skyline in the background. 3. A vibrant street scene in Greenwich Village. 4. Central Park's Bethesda Terrace and Fountain. 5. A colorful street art mural in a hip neighborhood."
+    },
+    {
+      "Day/Date Suggestion": "Sunday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Video",
+      "Core Concept/Topic": "NYC Food Hacks: Finding Cheap Eats",
+      "Draft Caption": "\ud83c\udf55 Eating like a king in NYC without emptying your wallet? It\u2019s possible!  Here are my go-to spots for delicious and affordable food. What are YOUR favorite budget-friendly NYC eats? Share below! \ud83d\udc47 #NYCFoodie #CheapEatsNYC #BudgetFood #NYCRestaurants #FoodHacks #NYCOnABudget",
+      "Relevant Hashtags": "#NYCFoodie #CheapEatsNYC #BudgetFood #NYCRestaurants #FoodHacks #NYCOnABudget #StreetFoodNYC #HiddenFoodGems",
+      "AI Trend Insight": "Taps into the pervasive food trend and combines it with the budget-friendly theme, creating relevance. Community building with a question.",
+      "Image Generation Prompt": "A fast-paced, mouthwatering video showcasing various affordable food options: a slice of New York-style pizza, a delicious-looking halal cart, a close-up of a pastrami on rye, a vibrant bowl of ramen, and a street vendor selling pretzels."
+    },
+    {
+      "Day/Date Suggestion": "Thursday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Video",
+      "Core Concept/Topic": "Ask Me Anything (AMA) about NYC",
+      "Draft Caption": "NYC newbie?  Long-time resident?  Ask me ANYTHING about the city that never sleeps!  I'll answer your burning questions in a follow-up Reel. Let's chat!  #AskMeAnything #NYCAMA #NewYorkCity #TravelQuestions #NYCExpert #AskAway",
+      "Relevant Hashtags": "#AskMeAnything #NYCAMA #NewYorkCity #TravelQuestions #NYCExpert #AskAway #NYCtips #TravelAdvice",
+      "AI Trend Insight": "Leverages the popular AMA format for community engagement. Creates anticipation and fosters interaction.",
+      "Image Generation Prompt": "A short video of the creator smiling and waving, with text overlay saying \"Ask Me Anything about NYC!\"  Background could be a blurred, scenic NYC backdrop."
+    }
+  ],
+  "feedback": {},
+  "suggestions": [],
+  "export_timestamp": "2025-08-08T20:55:18.864727"
+}

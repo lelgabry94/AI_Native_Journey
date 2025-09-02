@@ -1,0 +1,48 @@
+{
+  "user_profile": {
+    "experience_level": "beginner",
+    "niche": "nyc",
+    "platform_focus": "Instagram Reels",
+    "follower_count": "under_1k",
+    "goals": [
+      "build_audience",
+      "engagement",
+      "education"
+    ]
+  },
+  "selected_posts": [
+    {
+      "Day/Date Suggestion": "Monday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Video Reel",
+      "Core Concept/Topic": "NYC on a Budget: Free Things To Do",
+      "Draft Caption": "\"NYC doesn't have to break the bank! \u2728  What are YOUR favorite FREE things to do in the city?  Share your hidden gems in the comments below! \ud83d\udc47 #NYCFreebies #BudgetNYC #HiddenGemsNYC #NYCExplorer\"",
+      "Relevant Hashtags": "#NYC, #NewYorkCity, #NYCFreeThingsToDo, #BudgetTravel, #NYCGuide, #TravelTips, #FreeNYC",
+      "AI Trend Insight": "Utilizes the \"Ask Me Anything\" trend (AMA) by encouraging comments and interaction. Leverages the current focus on affordable travel and budget-friendly content.",
+      "Image Generation Prompt": "(Not needed, focus on filming actual free activities like walking the Brooklyn Bridge, visiting Central Park, exploring a free museum day, etc.)"
+    },
+    {
+      "Day/Date Suggestion": "Wednesday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Video Reel",
+      "Core Concept/Topic": "Navigating the NYC Subway Like a Pro (Beginner's Guide)",
+      "Draft Caption": "\"Subway survival 101! \ud83d\ude87  Mastering the NYC subway can seem daunting, but it doesn't have to be.  This reel gives you my top tips! What's YOUR biggest subway struggle? Let me know in the comments! #NYCSubway #SubwayTips #NYCBeginner #CommuteLife #NewYorkTips #TransitTips\"",
+      "Relevant Hashtags": "#NYCSubway, #NewYorkCitySubway, #SubwayHacks, #TravelHacks, #NYCForBeginners, #NYCCommute, #GettingAroundNYC",
+      "AI Trend Insight": "Tutorial style Reels are highly popular. This taps into the \"how-to\" trend and provides valuable information.",
+      "Image Generation Prompt": "(Not needed, film yourself using the subway, highlighting important aspects like swiping your card, checking the train schedule, navigating platforms etc.)"
+    },
+    {
+      "Day/Date Suggestion": "Sunday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Image/Video Reel",
+      "Core Concept/Topic": "\"My Favorite NYC Neighborhood: [Choose a neighborhood - e.g., Greenwich Village]\"",
+      "Draft Caption": "\"Greenwich Village stole a piece of my heart! \ud83d\udc9a What's your favorite NYC neighborhood and why?  Let's share our love for the city! #GreenwichVillage #NYCNighborhoods #ExploreNYC #NYCVibe #ThingsToDoNYC #MyNYC\"",
+      "Relevant Hashtags": "#GreenwichVillage, #NYC, #NewYorkCity, #NeighborhoodLove, #Travel, #Explore, #VisitNYC",
+      "AI Trend Insight": "Emphasizes community building through sharing personal experiences and prompting user responses. Leverages the popular \"favorite things\" trend.",
+      "Image Generation Prompt": "A collage of photos and short video clips showcasing the chosen neighborhood - (e.g.,  \"A vibrant collage of images showcasing the charming streets, independent shops, and cozy cafes of Greenwich Village in New York City. The style should be bright, cheerful, and evoke a feeling of community and exploration.\")"
+    }
+  ],
+  "feedback": {},
+  "suggestions": [],
+  "export_timestamp": "2025-08-08T22:13:31.207105"
+}

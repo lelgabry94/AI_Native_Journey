@@ -9,6 +9,7 @@ import json
 from llm_utils import generate_content_plan
 from data_parser import parse_content_plan_text
 from google_sheets_utils import export_to_google_sheet
+from google_sheets_utils import get_service_account_email
 
 load_dotenv()
 
@@ -59,6 +60,14 @@ def apply_collaborative_styles():
         border: 2px solid transparent;
         transition: all 0.3s ease;
     }
+
+    /* Ensure consistent visual size for main white boxes */
+    .uniform-card {
+        height: 380px;           /* same height for all main white boxes */
+        display: flex;
+        flex-direction: column;
+        overflow: auto;          /* scroll inside if content is taller */
+    }
     
     .collaborative-card:hover {
         transform: translateY(-2px);
@@ -68,6 +77,7 @@ def apply_collaborative_styles():
     .post-card {
         border: 2px solid #e5e7eb;
         transition: all 0.3s ease;
+        min-height: 160px;
     }
     
     .post-card.selected {
@@ -99,17 +109,20 @@ def collaborative_main():
     
     with ui.column().classes('max-w-6xl mx-auto'):
         # Header
-        with ui.card().classes('collaborative-card'):
-            ui.markdown('# 🎨 AuraCraft AI - Your Collaborative Content Partner')
+        with ui.card().classes('collaborative-card uniform-card'):
+            ui.markdown('# AuraCraft')
             ui.markdown('*Perfect for creators of all sizes and experience levels*')
-            
             with ui.row().classes('w-full items-center gap-4'):
-                ui.icon('psychology', size='2rem', color='primary')
-                ui.markdown('**AI + Your Creativity = Perfect Content**')
+                ui.markdown('**AI plus your creativity for better content**')
+            sa_email = get_service_account_email()
+            if sa_email:
+                ui.markdown(f"Share your Google Sheet with: `{sa_email}`").classes('text-sm opacity-70')
+            else:
+                ui.markdown("No service account detected yet. Add GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_SERVICE_ACCOUNT_FILE in .env.").classes('text-sm opacity-70')
         
         # User Profile Setup
-        with ui.card().classes('collaborative-card'):
-            ui.markdown('## 👤 Tell Us About You')
+        with ui.card().classes('collaborative-card uniform-card'):
+            ui.markdown('## Tell Us About You')
             ui.markdown('*This helps us personalize suggestions for your unique situation*')
             
             with ui.grid(columns=2).classes('w-full gap-4'):
@@ -118,10 +131,10 @@ def collaborative_main():
                     ui.label('Content Creation Experience:').classes('font-medium')
                     experience = ui.select(
                         options={
-                            'absolute_beginner': '🌱 Complete Beginner',
-                            'beginner': '📚 Some Experience', 
-                            'intermediate': '🚀 Intermediate',
-                            'advanced': '⭐ Advanced Creator'
+                            'absolute_beginner': 'Complete Beginner',
+                            'beginner': 'Some Experience', 
+                            'intermediate': 'Intermediate',
+                            'advanced': 'Advanced Creator'
                         },
                         value='beginner',
                         label='Experience Level'
@@ -132,10 +145,10 @@ def collaborative_main():
                     ui.label('Current Following:').classes('font-medium')
                     followers = ui.select(
                         options={
-                            'just_starting': '🌟 Just Starting (0-100)',
-                            'under_1k': '📈 Growing (100-1K)',
-                            'under_10k': '🎯 Established (1K-10K)',
-                            'over_10k': '🚀 Influencer (10K+)'
+                            'just_starting': 'Just Starting (0-100)',
+                            'under_1k': 'Growing (100-1K)',
+                            'under_10k': 'Established (1K-10K)',
+                            'over_10k': 'Influencer (10K+)'
                         },
                         value='under_1k',
                         label='Follower Count'
@@ -163,11 +176,11 @@ def collaborative_main():
                 goal_sales = ui.checkbox('Drive sales/business')
                 goal_personal_brand = ui.checkbox('Build personal brand')
                 goal_education = ui.checkbox('Educate/help others', value=True)
-                goal_fun = ui.checkbox('Just for fun!')
+                goal_fun = ui.checkbox('Just for fun')
 
         # Content Generation Section
-        with ui.card().classes('collaborative-card'):
-            ui.markdown('## 🎯 Generate Content Ideas')
+        with ui.card().classes('collaborative-card uniform-card'):
+            ui.markdown('## Generate Content Ideas')
             
             with ui.row().classes('w-full items-end gap-4'):
                 posts_count = ui.number(
@@ -183,7 +196,7 @@ def collaborative_main():
                 ).classes('flex-1')
             
             generate_btn = ui.button(
-                '🚀 Generate Ideas', 
+                'Generate Ideas', 
                 on_click=lambda: generate_collaborative_content()
             ).classes('w-full mt-4').props('size=lg color=primary')
 
@@ -218,7 +231,7 @@ def collaborative_main():
             
             with content_container:
                 ui.spinner('dots', size='lg')
-                ui.markdown('🤖 AI is brainstorming ideas tailored for you...')
+                ui.markdown('AI is brainstorming ideas tailored for you...')
             
             # Create personalized prompt
             user_input = create_personalized_prompt()
@@ -273,8 +286,8 @@ def collaborative_main():
             content_container.clear()
             
             with content_container:
-                ui.markdown('## 🎨 Your Personalized Content Ideas')
-                ui.markdown('*Click on ideas you like, then customize and export your favorites!*')
+                ui.markdown('## Your Personalized Content Ideas')
+                ui.markdown('*Click on ideas you like, then customize and export your favorites*')
                 
                 if not app_state['generated_posts']:
                     ui.markdown('No content generated. Please try again.')
@@ -287,17 +300,17 @@ def collaborative_main():
                 # Action buttons
                 with ui.row().classes('w-full justify-center gap-4 mt-6'):
                     ui.button(
-                        '🔄 Generate More Ideas', 
+                        'Generate More Ideas', 
                         on_click=lambda: generate_collaborative_content()
                     ).props('color=primary outline')
                     
                     ui.button(
-                        '✨ Refine Selected', 
+                        'Refine Selected', 
                         on_click=lambda: show_refinement_panel()
                     ).props('color=secondary')
                     
                     ui.button(
-                        '📊 Export Selected', 
+                        'Export Selected', 
                         on_click=lambda: export_selected_content()
                     ).props('color=positive')
 
@@ -312,21 +325,21 @@ def collaborative_main():
                             on_change=lambda e, idx=index: toggle_post_selection(idx, e.value)
                         ).classes('mb-2')
                         
-                        ui.markdown(f"### 📌 Post {index + 1}: {post.get('Day/Date Suggestion', 'Flexible Timing')}")
-                        ui.markdown(f"**🎯 Topic:** {post.get('Core Concept/Topic', 'General Content')}")
+                        ui.markdown(f"### Post {index + 1}: {post.get('Day/Date Suggestion', 'Flexible Timing')}")
+                        ui.markdown(f"**Topic:** {post.get('Core Concept/Topic', 'General Content')}")
                     
                     # Feedback buttons
                     with ui.column().classes('items-end gap-1'):
-                        ui.button('👍', on_click=lambda idx=index: add_feedback(idx, 'like')).props('size=sm flat color=positive')
-                        ui.button('👎', on_click=lambda idx=index: add_feedback(idx, 'dislike')).props('size=sm flat color=negative')
-                        ui.button('💡', on_click=lambda idx=index: show_suggestion_dialog(idx)).props('size=sm flat color=primary')
+                        ui.button('Like', on_click=lambda idx=index: add_feedback(idx, 'like')).props('size=sm flat color=positive')
+                        ui.button('Dislike', on_click=lambda idx=index: add_feedback(idx, 'dislike')).props('size=sm flat color=negative')
+                        ui.button('Suggest', on_click=lambda idx=index: show_suggestion_dialog(idx)).props('size=sm flat color=primary')
                 
                 # Content preview
                 with ui.expansion('Preview Content', icon='visibility').classes('w-full'):
-                    ui.markdown(f"**📱 Platform:** {post.get('Platform', 'Not specified')}")
-                    ui.markdown(f"**📝 Caption Preview:**")
+                    ui.markdown(f"**Platform:** {post.get('Platform', 'Not specified')}")
+                    ui.markdown(f"**Caption Preview:**")
                     ui.markdown(f"*{post.get('Draft Caption', 'No caption generated')[:150]}...*")
-                    ui.markdown(f"**🏷️ Hashtags:** {post.get('Relevant Hashtags', 'No hashtags')}")
+                    ui.markdown(f"**Hashtags:** {post.get('Relevant Hashtags', 'No hashtags')}")
                 
                 # Store card reference for styling updates
                 checkbox.card = card
@@ -349,7 +362,7 @@ def collaborative_main():
             if app_state['selected_posts']:
                 with selection_summary:
                     with ui.card().classes('collaborative-card'):
-                        ui.markdown(f"## ✅ Selected: {len(app_state['selected_posts'])} Ideas")
+                        ui.markdown(f"## Selected: {len(app_state['selected_posts'])} Ideas")
                         
                         for idx in app_state['selected_posts']:
                             post = app_state['generated_posts'][idx]
@@ -369,14 +382,14 @@ def collaborative_main():
             
             # Show feedback confirmation
             if feedback_type == 'like':
-                ui.notify('👍 Thanks! This helps us understand your preferences.', type='positive')
+                ui.notify('Thanks! This helps us understand your preferences.', type='positive')
             else:
-                ui.notify('👎 Noted! We\'ll suggest different styles next time.', type='info')
+                ui.notify('Noted! We\'ll suggest different styles next time.', type='info')
 
         def show_suggestion_dialog(index):
             """Show dialog for user suggestions"""
             with ui.dialog() as dialog, ui.card():
-                ui.markdown('## 💡 Your Suggestion')
+                ui.markdown('## Your Suggestion')
                 ui.markdown('How would you improve this idea?')
                 
                 suggestion_input = ui.textarea(
@@ -398,7 +411,7 @@ def collaborative_main():
                     'suggestion': suggestion,
                     'timestamp': datetime.now().isoformat()
                 })
-                ui.notify('💡 Suggestion saved! We\'ll incorporate your feedback.', type='positive')
+                ui.notify('Suggestion saved! We\'ll incorporate your feedback.', type='positive')
                 dialog.close()
 
         def show_refinement_panel():
@@ -408,7 +421,7 @@ def collaborative_main():
                 return
             
             with ui.dialog() as dialog, ui.card().classes('w-96'):
-                ui.markdown('## ✨ Refine Your Selected Ideas')
+                ui.markdown('## Refine Your Selected Ideas')
                 
                 ui.markdown('What would you like to adjust?')
                 
@@ -435,7 +448,7 @@ def collaborative_main():
 
         def apply_refinements(dialog):
             """Apply user refinements to selected posts"""
-            ui.notify('✨ Refinements applied! Check your selected posts.', type='positive')
+            ui.notify('Refinements applied! Check your selected posts.', type='positive')
             dialog.close()
 
         def export_selected_content():
@@ -457,16 +470,18 @@ def collaborative_main():
                 'export_timestamp': datetime.now().isoformat()
             }
             
-            # Export to CSV
-            export_to_google_sheet(selected_data, "collaborative_content", "SelectedPosts")
+            # Export to Google Sheets if configured, else CSV fallback
+            spreadsheet_id = os.getenv("DEFAULT_GOOGLE_SHEET_ID", "").strip()
+            sheet_name = os.getenv("DEFAULT_GOOGLE_SHEET_NAME", "SelectedPosts")
+            export_to_google_sheet(selected_data, spreadsheet_id, sheet_name)
             
             # Save full session data
             filename = f"collaborative_session_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
             with open(filename, 'w') as f:
                 json.dump(export_data, f, indent=2)
             
-            ui.notify(f'🎉 Exported {len(selected_data)} selected posts!', type='positive')
-            ui.notify(f'💾 Session saved as {filename}', type='info')
+            ui.notify(f'Exported {len(selected_data)} selected posts!', type='positive')
+            ui.notify(f'Session saved as {filename}', type='info')
 
 if __name__ in {"__main__", "__mp_main__"}:
-    ui.run(port=8080, show=True, title="AuraCraft AI - Collaborative Content Creator") 
+    ui.run(port=8080, show=True, title="AuraCraft")

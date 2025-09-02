@@ -1,0 +1,48 @@
+{
+  "user_profile": {
+    "experience_level": "beginner",
+    "niche": "nyc",
+    "platform_focus": "Instagram Reels",
+    "follower_count": "under_1k",
+    "goals": [
+      "build_audience",
+      "engagement",
+      "education"
+    ]
+  },
+  "selected_posts": [
+    {
+      "Day/Date Suggestion": "Wednesday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Video Reel",
+      "Core Concept/Topic": "NYC Subway Survival Guide for Beginners",
+      "Draft Caption": "Navigating the NYC subway can feel overwhelming, but it doesn't have to be!  What's YOUR biggest subway struggle? Let's help each other out! Share your tips and tricks in the comments!  #SubwaySurvival #NYCSubway #NewToNYC #NYCtips #CommuteLife #CityLifeHack #TravelHacks #NYCGuide",
+      "Relevant Hashtags": "#SubwaySurvival #NYCSubway #NewToNYC #NYCtips #CommuteLife #CityLifeHack #TravelHacks #NYCGuide #PublicTransport",
+      "AI Trend Insight": "This leverages the \"how-to\" and \"tips and tricks\" trends, focusing on a common pain point for newcomers.",
+      "Image Generation Prompt": "A fast-paced reel showing various aspects of using the subway: buying a metro card, navigating the map, finding your train, dealing with crowds, exiting the station.  Use text overlays to explain key points, and upbeat, slightly quirky music."
+    },
+    {
+      "Day/Date Suggestion": "Monday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Video Reel",
+      "Core Concept/Topic": "NYC on a Budget: Free Activities",
+      "Draft Caption": "NYC doesn't have to break the bank! \u2728  What are YOUR favorite FREE things to do in the city that a first-timer wouldn't know about? Share in the comments below! \ud83d\udc47 Let's build the ultimate free NYC itinerary together. #NYCOnABudget #FreeNYC #HiddenGemsNYC #TravelTips #NYCAdventures #BudgetTravel #ExploreNYC",
+      "Relevant Hashtags": "#NYCOnABudget #FreeNYC #HiddenGemsNYC #TravelTips #NYCAdventures #BudgetTravel #ExploreNYC #ThingsToDoNYC",
+      "AI Trend Insight": "This leverages the \"community-created content\" trend and the rising interest in budget-friendly travel.  It also taps into the popularity of \"hidden gem\" and \"local favorites\" content.",
+      "Image Generation Prompt": "A vibrant montage of quick shots: a bustling street fair, people enjoying Central Park, a view from a free bridge, someone admiring street art, a close-up of a delicious free food sample. Style should be bright, quick cuts, upbeat music."
+    },
+    {
+      "Day/Date Suggestion": "Sunday",
+      "Platform": "Instagram Reels",
+      "Post Type": "Image Reel",
+      "Core Concept/Topic": "NYC Neighborhood Spotlight: [Choose a neighborhood, e.g., Greenwich Village]",
+      "Draft Caption": "Exploring the charming streets of Greenwich Village! \u2728 What's your favorite neighborhood in NYC and why? Let's discover the city together! #GreenwichVillage #NYCNeighborhoods #ExploreNYC #NYCVibe #HiddenGemsNYC #ThingsToDoNYC",
+      "Relevant Hashtags": "#GreenwichVillage #NYCNeighborhoods #ExploreNYC #NYCVibe #HiddenGemsNYC #ThingsToDoNYC #NYCTravel",
+      "AI Trend Insight": "Leverages the \"neighborhood spotlight\" trend and encourages local exploration.",
+      "Image Generation Prompt": "A series of aesthetically pleasing images of Greenwich Village: charming brownstones, cozy cafes, street art, Washington Square Park. Use a consistent filter for a cohesive feel."
+    }
+  ],
+  "feedback": {},
+  "suggestions": [],
+  "export_timestamp": "2025-08-08T21:10:36.497451"
+}

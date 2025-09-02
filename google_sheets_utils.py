@@ -36,7 +36,7 @@ def get_sheets_service():
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open(TOKEN_FILE, "w") as token:
-            token.write(creds.to_json())
+            token.write(creds.to_json())`1`
 
     try:
         service = build("sheets", "v4", credentials=creds)
